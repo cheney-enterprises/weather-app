@@ -1,0 +1,12 @@
+html
+    block head
+        include ../partials/head
+    body
+        #overlay(onclick="off()")
+        include ../partials/header
+        block mainBlock
+            main
+                block mainSubBlock
+        block bodyScripts
+            include scriptsLayout
+        include ../partials/footer

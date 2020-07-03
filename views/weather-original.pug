@@ -1,0 +1,83 @@
+extends ./layouts/mainLayout
+
+mixin slideImg(vb,path,fill)
+    div(class="card-img-top")
+        svg(class="wxIcon" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox= vb)
+            path(fill= fill fill-rule="evenodd" clip-rule="evenodd" d= path)
+
+mixin chartItem(title,imgName,imgSrc,value="--",valueIndicator)
+    div.col-xl-2.col-md-4.col-sm-6.col-12.chartCol
+        div.row.chartTopRow
+            div.col
+                h5(align="center") #{title}
+        div.row
+            div.col-5(align="right")
+                img(class="chartImg " + "chartImg" + imgName src=imgSrc)
+            div.col-7.chartValCol(align="center")
+                h3.chartVal #{value} #{valueIndicator}
+
+mixin slideBody(type,wxLoc,temp="--",sum="--")
+    .card-body
+        h2(class="card-title" align="center") #{type} Weather
+        hr
+        h4(align="center") #{wxLoc} 
+        //- h2(align="center") #{temp}&deg
+        //- h6(class="card-text" align="center") #{sum}
+        div.card-scroll-container(style="overflow-x:hidden; overflow-y: scroll; width:100%; height: 28vh; margin-top:2.5vh;")
+            div.scroll-wrapper.mt-lg-4
+                h2(align="center" style="margin-bottom: 2vh;") #{temp}&deg
+                h6(class="card-text" align="center") #{sum}
+                div
+                    div.row.chartContainer.swiper-no-swiping
+                        +chartItem("Precip.","Rain","/img/icons8-water-48.png",currently.precipProbability*100,"%")
+                        +chartItem("Precip.","Rain","/img/icons8-water-48.png",currently.precipProbability*100,"%")
+                        +chartItem("Precip.","Rain","/img/icons8-water-48.png",currently.precipProbability*100,"%")
+                        +chartItem("Precip.","Rain","/img/icons8-water-48.png",currently.precipProbability*100,"%")
+                        +chartItem("Precip.","Rain","/img/icons8-water-48.png",currently.precipProbability*100,"%")
+                        +chartItem("Precip.","Rain","/img/icons8-water-48.png",currently.precipProbability*100,"%")
+            
+
+append mainSubBlock
+    .swiper-container.mainSwiper
+        .swiper-wrapper#mainSwiperWrapper
+            .swiper-slide
+                .swiper-container.hourlyContainer
+                    .swiper-wrapper#hourlySwiperWrapper
+                        .swiper-slide.card
+                            +slideImg(hourlyIcon.vb,hourlyIcon.path,(hourlyIcon.fill || "green"))
+                            +slideBody("Hourly",currentLocation,hourly.data[0].temperature,hourly.summary)
+                        .swiper-slide.card
+                            +slideImg(currentIcon.vb,currentIcon.path,(currentIcon.fill || "green"))
+                            +slideBody("Current",currentLocation,currently.temperature,currently.summary)
+            
+                    .swiper-pagination.hourlyPagination
+            .swiper-slide.card
+                +slideImg(currentIcon.vb,currentIcon.path,(currentIcon.fill || "green"))
+                +slideBody("Current",currentLocation,currently.temperature,currently.summary)
+            .swiper-slide
+                .swiper-container.dailyContainer
+                    .swiper-wrapper#dailySwiperWrapper
+                        .swiper-slide.card
+                            +slideImg(dailyIcon.vb,dailyIcon.path, (dailyIcon.fill || "green"))
+                            +slideBody("Daily",currentLocation,daily.data[0].temperatureHigh,daily.summary)
+                        .swiper-slide.card
+                            +slideImg(currentIcon.vb,currentIcon.path,(currentIcon.fill || "green"))
+                            +slideBody("Current",currentLocation,currently.temperature,currently.summary)
+            
+                    .swiper-pagination.dailyPagination
+                    
+        .swiper-pagination.mainSwiperPagination
+        .swiper-button-prev.mainSwiperPrev
+        .swiper-button-next.mainSwiperNext
+
+append bodyScripts
+    script(src="/js/wxIcon.js")
+    script(src="/js/swiper.min.js")
+    script(src="/js/swiperInit.js")
+    //- script(src="./js/skycons.js")
+    
+    //- script(src="./js/skyconsInit.js")
+    
+        
+
+   

@@ -1,0 +1,20 @@
+header(id="header")
+    nav.bg-dark.navbar.navbar-expand-lg.navbar-dark
+        a(class="col navbar-brand pl-0" href="#" style="font-family: Michroma" id="logoLink")
+            img(src='/img/completeAnimation-2-5sec-1rot-rev.png', id="headerLogo")
+            span(id='logoText')
+                | 
+        button(id="navButton" class="navbar-toggler d-small-flex d-inline-block d-lg-none mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+        div(class="collapse navbar-collapse" id="navbarSupportedContent")
+            ul(class="navbar-nav ml-md-auto d-md-flex")
+                mixin navlist(name)
+                    li.nav-item
+                        a(id= name class="nav-link" href= "https://cheney-enterprises.com/"+name ) 
+                            |#{name.toUpperCase()}
+
+                +navlist("home")
+                +navlist("about")
+                +navlist("services")
+                +navlist("contact")
+                +navlist("help")

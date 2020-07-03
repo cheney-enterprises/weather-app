@@ -1,0 +1,80 @@
+body{
+    overscroll-behavior: none;
+}
+h1{
+    color: rebeccapurple
+}
+.icons{
+    height:35vh;
+    margin:0;
+    padding:0;
+}
+.icon{
+    display: block;
+    margin: 0 auto;
+}
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+footer{
+    height:5vh;
+    font-family: 'Michroma';
+    color: gray;
+    color: darkgray;
+}
+p{
+    color: orange;
+    font-weight: bold;
+}
+#headerLogo{
+    height: 10vh;
+    width: auto;
+}
+.mainSwiper{
+    height:95vh;
+    padding:2.5vh 0;
+}
+#mainSwiperWrapper{
+    padding:2.5vh 0;
+    height: 95%;
+}
+.swiper-slide {
+    height: 100%;
+}
+.card-img-top{
+    height: auto;
+}
+.card-body{
+    height: auto;
+}
+.card-text{
+    font-style: italic;
+}
+.chartCol{
+    margin: 2vh 0 1vh 0;
+}
+.chartImgRain{
+    transform: rotate(29deg);
+}
+.wxIcon{
+    display: block;
+    margin:0 auto;
+    height: 30vh;
+    width:auto;
+}
+hr{
+    border-color: darkslategray;
+}
+footer h6{
+    padding: 0 15px;
+}
