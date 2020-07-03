@@ -10,11 +10,10 @@ const {
   wind,
   sleet,
   rain,
-  hail
+  hail,
 } = require("./svgPaths");
 
-
-const wxIcon = icon => {
+const wxIcon = (icon) => {
   switch (icon) {
     case "tornado":
       return tornado;
@@ -58,4 +57,4 @@ const wxIcon = icon => {
   }
 };
 
-module.exports = wxIcon
+module.exports = wxIcon;

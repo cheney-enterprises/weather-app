@@ -1,19 +1,19 @@
 // @ts-nocheck
-const express = require('express')
+const express = require("express");
 const path = require("path");
-const wxIcon = require("../utils/modules/wxIcon")
+const wxIcon = require("../utils/modules/wxIcon");
 
 let obj = {
   location: "Richmond, VA",
   current: {
-    icon: 'tornado'
+    icon: "tornado",
   },
   daily: {
-    icon: 'thunderstorm'
+    icon: "thunderstorm",
   },
   hourly: {
-    icon: 'clear-day'
-  }
+    icon: "clear-day",
+  },
 };
 
 const app = express();
@@ -22,13 +22,13 @@ const app = express();
 const publicPath = path.join(__dirname, "../public");
 
 // setup view engine - pug
-app.set('views', path.join(__dirname, '../views'))
-app.set('view engine', 'pug')
+app.set("views", path.join(__dirname, "../views"));
+app.set("view engine", "pug");
 
 // setup static file service
 app.use(express.static(publicPath, {
-    extensions: ['html','htm']
-}))
+  extensions: ["html", "htm"],
+}));
 
 // setup routes for mainRoute
 // @ts-ignore
@@ -38,11 +38,11 @@ app.get("/", (req, res, next) => {
     name: {
       first: "Eric",
       middle: "Michael",
-      last: "Cheney"
+      last: "Cheney",
     },
-    location: "Richmond, VA"
+    location: "Richmond, VA",
   });
-})
+});
 
 // @ts-ignore
 app.get("/about", (req, res, next) => {
@@ -51,8 +51,8 @@ app.get("/about", (req, res, next) => {
     name: {
       first: "Eric",
       middle: "Michael",
-      last: "Cheney"
-    }
+      last: "Cheney",
+    },
   });
 });
 
@@ -60,7 +60,7 @@ app.get("/about", (req, res, next) => {
 app.get("/help", (req, res, next) => {
   res.render("help", {
     title: "Weather App",
-    name: "Eric"
+    name: "Eric",
   });
 });
 
@@ -68,7 +68,7 @@ app.get("/help", (req, res, next) => {
 app.get("/help/*", (req, res, next) => {
   res.render("404", {
     title: "Error: Help Page does nto exist",
-    errorMessage: "There is no help article for this subject"
+    errorMessage: "There is no help article for this subject",
   });
 });
 
@@ -78,9 +78,8 @@ app.get("/wx", (req, res, next) => {
     hourlyIcon: wxIcon(obj.hourly.icon),
     currentIcon: wxIcon(obj.current.icon),
     dailyIcon: wxIcon(obj.daily.icon),
-    location: obj.location
-      
+    location: obj.location,
   });
-})
+});
 
-module.exports = app
+module.exports = app;

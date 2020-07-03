@@ -6,14 +6,14 @@ class dateConvert {
     this._strArr = this._str.split(" ");
     this._timeArr = this._strArr[4].split(":");
     this._weekDay = this._strArr[0],
-    this._month = this._strArr[1],
-    this._day = this._strArr[2],
-    this._year = this._strArr[3],
-    this._time = this._strArr[4],
-    this._hour = this._timeArr[0],
-    this._minute = this._timeArr[1],
-    this._second = this._timeArr[2],
-    this._GMT = this._strArr[5]
+      this._month = this._strArr[1],
+      this._day = this._strArr[2],
+      this._year = this._strArr[3],
+      this._time = this._strArr[4],
+      this._hour = this._timeArr[0],
+      this._minute = this._timeArr[1],
+      this._second = this._timeArr[2],
+      this._GMT = this._strArr[5];
   }
   get weekDay() {
     return this._weekDay;
@@ -67,7 +67,7 @@ module.exports = dateConvert;
 
 const date = new dateConvert(date1);
 console.log(
-  date.date
+  date.date,
   //.toDateString()
   //.slice(0, 19)
   //.replace("T", " ")

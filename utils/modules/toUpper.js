@@ -1,13 +1,14 @@
 const toUpper = (fnStr) => {
   "use strict";
-  var smallWords = /^(a|an|and|as|at|but|by|en|for|if|is|in|nor|of|on|or|per|the|to|v.?|vs.?|via)$/i;
+  var smallWords =
+    /^(a|an|and|as|at|but|by|en|for|if|is|in|nor|of|on|or|per|the|to|v.?|vs.?|via)$/i;
   var alphanumericPattern = /([A-Za-z0-9\u00C0-\u00FF])/;
   var wordSeparators = /([ :–—-])/;
   var str = fnStr.toLowerCase();
 
   return str
     .split(wordSeparators)
-    .map(function(current, index, array) {
+    .map(function (current, index, array) {
       if (
         /* Check for small words */
         current.search(smallWords) > -1 &&
@@ -35,7 +36,7 @@ const toUpper = (fnStr) => {
       }
 
       /* Capitalize the first letter */
-      return current.replace(alphanumericPattern, function(match) {
+      return current.replace(alphanumericPattern, function (match) {
         return match.toUpperCase();
       });
     })
@@ -43,4 +44,4 @@ const toUpper = (fnStr) => {
     .split(" ")
     .join(", ");
 };
-module.exports = toUpper
+module.exports = toUpper;
